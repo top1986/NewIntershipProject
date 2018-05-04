@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/layouts/base.css' %} ">
+    {% block css %}{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <section>
+        <!-- <h1>Welcome to Ortho Web Site</h1> -->
+          <ul >
+            <li><a href="{% url 'home' %}">Home</a> </li>
+            <li><a href="{% url 'predictions:index' %}">Predictions</a> </li>
+            <li><a href="{% url 'evaluation' %}">Evaluation</a> </li>
+            <li> <a href="{% url 'monitoring' %}">Monitoring</a> </li>
+            <li> <a href="{% url 'management' %}">Management</a> </li>
+          </ul>
+      </section>
+  </div>
+  <div id="container">
+    {% block content %}
+
+    {% endblock %}
+  </div>
+
+
+    
+    <div id="footer">
+
+      <section>
+        <p>
+          &copy; {% now 'Y' %}
+        ML+ - All rights reserved
+        </p>
+    </section>
+      
+    </div>
+    
+    {% block javascript%} {% endblock %}
+
+  </body>
+</html>

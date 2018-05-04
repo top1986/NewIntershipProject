@@ -1,0 +1,54 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}  Home  {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/predictions/index.css' %} ">  {% endblock %}
+
+<!-- {% block script %}
+  /javascript/home.js
+{% endblock %} -->
+
+{% block content %}
+
+  <h1>Make your predictions using this form </h1>
+
+  <form method="post" >
+    {% csrf_token %}
+
+    {% for field in form %}
+
+      {% if forloop.first %}
+        <aside> 
+      {% endif %}
+
+      {{ field.label_tag }}
+      {{ field }}
+
+      {% if forloop.counter0 == 20 %}
+        </aside>
+        <aside>
+      {% endif %}
+
+      {% if forloop.last %}
+        </aside>
+      {% endif %}
+
+    {% endfor %}
+
+    <br>
+
+    <input type="submit" name="predict" value="Predict without saving"> 
+    <input type="submit" name="predict" value="Predict and save">
+
+  </form>
+
+  <a href="{% url 'predictions:show' %}">View all saved predictions </a>
+
+{% endblock %}
+
+<!-- {% block javascript%}
+
+ 
+
+{% endblock %} -->

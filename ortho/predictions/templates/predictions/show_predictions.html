@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+	<h1>Details of all saved predictions </h1>
+
+	<table>
+		
+		{% for obj in predictions %}
+
+				{% if forloop.first %}
+					<tr>
+						{% for field in obj.keys %}
+							
+							<th>
+								{{field}}
+							</th>
+						{% endfor %}
+					</tr>
+
+				{% endif %}
+
+				<tr>
+
+					{% for value in obj.values %}							
+						<td>					
+							{{value}}
+						</td>							
+					{% endfor %}
+
+				</tr>
+
+			
+
+		{% endfor %}
+	</table>
+
+	<!-- {% for obj in predictions %}
+		{{obj}}
+
+	{% endfor %} -->
+
+	<!-- <table>
+		<thead>
+			<
+		</thead>
+	</table> -->
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block title %}  Home  {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/home.css' %} ">  {% endblock %}
+
+<!-- {% block script %}
+  /javascript/home.js
+{% endblock %} -->
+
+{% block content %}
+
+  <p>Welcome to web site ortho where you can predicit if your patient can be go to home or if he/she must be stay</p>
+
+  <p>Click <a href="{% url 'predictions:index' %}">here</a> to make prediction</p>
+
+{% endblock %}
+
+<!-- {% block javascripts%}
+
+{% endblock %} -->
