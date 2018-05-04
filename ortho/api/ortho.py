@@ -12,6 +12,7 @@ from predictions.models import PredictModel
 
 model = joblib.load('ml/spec_files/models/best_model.sav') # Loading the model at the specified file
 trans = joblib.load('ml/spec_files/models/transformer.pkl') # Loading the transformation at the specified file
+evaluation = joblib.load('ml/spec_files/models/evaluation')
 
 def clean_data(data):
 	"""
@@ -102,9 +103,9 @@ def clean_prediciton(value):
 
 
 def get_evaluation():
-	with open('ml/spec_files/models/evaluation', 'rb') as fichier:
-		depickler = pickle.Unpickler(fichier)
-		evaluation = depickler.load()
+	# with open('ml/spec_files/models/evaluation', 'rb') as fichier:
+	# 	depickler = pickle.Unpickler(fichier)
+	# 	evaluation = depickler.load()
 
 	return evaluation#['classification_report']
 

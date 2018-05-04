@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'predictions.apps.PredictionsConfig',
+    'evaluation.apps.EvaluationConfig',
 ]
 
 MIDDLEWARE = [

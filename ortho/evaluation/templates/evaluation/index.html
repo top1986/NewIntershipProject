@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html'%}
+
+{% block title %}Evaluation{% endblock %}
+
+{% block content %}
+
+  <p>Informations about the last evaluation model</p>
+
+  {% for key,value in evaluation.items %}
+
+  	<p> <strong>{{key}}: </strong> {{value}}</p>
+
+  {% endfor %}
+
+  
+
+{% endblock %}
