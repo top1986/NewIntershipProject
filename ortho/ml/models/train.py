@@ -12,9 +12,9 @@ from sklearn.metrics import (f1_score,precision_score,recall_score, classificati
                              precision_recall_curve,roc_auc_score,accuracy_score)
 
 from sklearn.externals import joblib
+import datetime
 
 PATH_SAVE_MODEL = "spec_files/models/"
-PATH_SAVE_PREDCITIONS = "spec_files/models"
 
 class BuildingModel:
     """
@@ -38,19 +38,19 @@ class BuildingModel:
                                                   max_depth=1, random_state=0)))#gradient boosting with differents
                                                                                 #hyperparameters for fine-tune the
                                                                                 #model
-        models.append(('AdaBoostClassifier',
-                       AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), n_estimators=500,
-                                          algorithm="SAMME.R", learning_rate=1)))#Applying an adaptive boosting
+        # models.append(('AdaBoostClassifier',
+        #                AdaBoostClassifier(DecisionTreeClassifier(max_depth=1), n_estimators=500,
+        #                                   algorithm="SAMME.R", learning_rate=1)))#Applying an adaptive boosting
                                                                                    #classifier on an tree classifier
                                                                                    #wich badly ovefits the data
 
 
-        models.append(('StackingClassifier',
-                      StackingClassifier(classifiers = [LogisticRegression(),
-                                                       KNeighborsClassifier(),
-                                                       RandomForestClassifier(),],
-                                        meta_classifier = LogisticRegression(), use_probas=True)
-                      ))
+        # models.append(('StackingClassifier',
+        #               StackingClassifier(classifiers = [LogisticRegression(),
+        #                                                KNeighborsClassifier(),
+        #                                                RandomForestClassifier(),],
+        #                                 meta_classifier = LogisticRegression(), use_probas=True)
+        #               ))
 
         return models
 
@@ -72,6 +72,7 @@ class BuildingModel:
                     "recall_score": recall_score(self.y_test,y_pred),
                     "accuracy_score": accuracy_score(self.y_test,y_pred),
                     "classification_report": classification_report(self.y_test,y_pred),
+                    "evaluated_at": datetime.datetime.now(),
                 }
 
         return results
@@ -105,7 +106,7 @@ class BuildingModel:
 
     def save_model(self,model):
 
-        model.fit(self.X_data, self.y_data)
+        #model.fit(self.X_data, self.y_data)
 
         joblib.dump(model, PATH_SAVE_MODEL + "best_model.sav")
 

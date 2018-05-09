@@ -1,14 +1,36 @@
 {% extends 'layouts/base.html'%}
 
+{% load static %}
+
 {% block title %}Evaluation{% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/evaluation/index.css' %} ">  {% endblock %}
+
 
 {% block content %}
 
-  <p>Informations about the last evaluation model</p>
+  <h1>Informations about the last evaluation model</h1>
+    
+
+  <!-- {{evaluation.classification_report|linebreaks}} -->
+
+
+  
 
   {% for key,value in evaluation.items %}
+  	<p> 
+  		
+  		<strong>{{key}}: </strong>
 
-  	<p> <strong>{{key}}: </strong> {{value}}</p>
+  		{% if key == 'classification_report' %} 
+		<pre>
+	 		{{ value|linebreaks }}
+	 	</pre>
+
+  		{% else %}
+  			{{value}}
+  		{% endif %}
+
+  	</p>
 
   {% endfor %}
 

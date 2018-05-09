@@ -12,6 +12,6 @@ class PredictForm(ModelForm):
 	"""
 	class Meta:
 		model = PredictModel
-		exclude = ['create_at', 'y_pred']
+		exclude = ['create_at', 'Discharge']
 		fields = '__all__'
 	

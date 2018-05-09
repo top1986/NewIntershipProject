@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from .forms import PredictForm
 from api import ortho
 
@@ -6,19 +7,12 @@ from api import ortho
 
 
 def index(request):
-
-	# with open('spec_files/attributes.yaml', 'r') as attrs:
-	#     attributes = yaml.load(attrs)
-
-
-
 	if request.method == 'POST':
 		form = PredictForm(request.POST)
 
 		if form.is_valid():
-			args = ortho.predict(form, request.POST.get('predict'))
-
-			return render(request, 'pages/success.html', {'args': args})
+			# return JsonResponse(ortho.predict(form, request.POST.get('predict')))
+			return render(request, 'predictions/success.html', {'args': ortho.predict(form, request.POST.get('predict'))})
 	else:
 		form = PredictForm() 
 	return render(request, 'predictions/index.html', {'form':form})

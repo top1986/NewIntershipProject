@@ -22,7 +22,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('predictions/', include('predictions.urls')),
     path('evaluation/', include('evaluation.urls')),
-    path('/monitoring', views.monitoring, name='monitoring'),
-    path('/management', views.management, name='management'),
+    path('monitoring/', views.monitoring, name='monitoring'),
+    path('management/', views.management, name='management'),
     # path('/success', views.success, name='success'),
 ]

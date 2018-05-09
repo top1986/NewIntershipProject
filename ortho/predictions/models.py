@@ -18,7 +18,7 @@ class PredictModel(models.Model):
 		('failedRCR_dx1', 'failedRCR_dx1')]
 
 	BMI = models.FloatField(verbose_name='Type BMI:')
-	AGE_AT_ADMIT = models.IntegerField(verbose_name='Type age:')
+	AGE_AT_ADMIT = models.FloatField(verbose_name='Type AGE_AT_ADMIT:')
 	Dx1 = models.CharField(max_length=200, verbose_name='Choose Dx1:', choices=DX_CHOICES, default='GHOA_dx1')
 	Dx2 = models.CharField(max_length=200, verbose_name='Choose Dx2:', choices=tuple([('','')]+DX_CHOICES), blank=True)
 	Dx3 = models.CharField(max_length=200, verbose_name='Choose Dx3:', choices=tuple([('','')]+DX_CHOICES), blank=True)
@@ -64,5 +64,5 @@ class PredictModel(models.Model):
 	Psychosis = models.CharField(max_length=5, choices=(('No', 'No'), ('Yes','Yes')), default='No')
 	Depression = models.CharField(max_length=5, choices=(('No', 'No'), ('Yes','Yes')), default='No')
 
-	create_at = models.DateField(auto_now_add=True)
-	y_pred = models.IntegerField()
+	Discharge = models.FloatField()
+	created_at = models.DateTimeField(auto_now_add=True)
